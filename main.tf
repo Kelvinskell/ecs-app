@@ -55,3 +55,11 @@ module "elastic_filesystem" {
   vpc_private_subnet2 = module.vpc.private_subnets[1]
   vpc_private_subnets3 = module.vpc.private_subnets[2]
 }
+
+module "application_load_balancer" {
+  source = "./modules/alb"
+ 
+  vpc_id = module.vpc.vpc_id
+  alb_sg = module.security_groups.Alb-sg_id
+  public_subnets = flatten([module.vpc.public_subnets[*]])
+}
