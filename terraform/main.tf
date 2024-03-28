@@ -15,8 +15,8 @@ provider "aws" {
 
 # Define local values
 locals {
-  env = "Prod"
-  purpose     = "ECS App" 
+  env     = "Prod"
+  purpose = "ECS App"
 }
 
 # Create A VPC
@@ -35,7 +35,7 @@ module "vpc" {
 
   tags = {
     Environment = local.env
-    Purpose = local.purpose
+    Purpose     = local.purpose
   }
 }
 
@@ -50,24 +50,24 @@ module "security_groups" {
 module "elastic_filesystem" {
   source = "./modules/efs"
 
-  efs_sg = module.security_groups.EFS-sg_id
-  vpc_private_subnet1 = module.vpc.private_subnets[0]
-  vpc_private_subnet2 = module.vpc.private_subnets[1]
+  efs_sg               = module.security_groups.EFS-sg_id
+  vpc_private_subnet1  = module.vpc.private_subnets[0]
+  vpc_private_subnet2  = module.vpc.private_subnets[1]
   vpc_private_subnets3 = module.vpc.private_subnets[2]
 }
 
 module "application_load_balancer" {
   source = "./modules/alb"
- 
-  vpc_id = module.vpc.vpc_id
-  alb_sg = module.security_groups.Alb-sg_id
+
+  vpc_id         = module.vpc.vpc_id
+  alb_sg         = module.security_groups.Alb-sg_id
   public_subnets = flatten([module.vpc.public_subnets[*]])
 }
 
 module "ecs" {
   source = "./modules/ecs"
 
-  efs_id = module.elastic_filesystem.efs_id
+  efs_id             = module.elastic_filesystem.efs_id
   ecs_execution_role = module.elastic_filesystem.ecs_role_id
-  
+
 }

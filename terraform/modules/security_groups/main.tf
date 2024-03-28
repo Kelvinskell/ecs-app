@@ -11,15 +11,15 @@ resource "aws_security_group" "alb_sg" {
   description = "Allow HTTP inbound traffic"
   vpc_id      = var.vpc_id
 
-  ingress{
-    description     = "HTTP"
-    from_port       = 80
-    to_port         = 80
-    protocol        = "tcp"
+  ingress {
+    description = "HTTP"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  egress{
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -37,7 +37,7 @@ resource "aws_security_group" "ecs_sg" {
   description = "Allow Flask inbound traffic"
   vpc_id      = var.vpc_id
 
-  ingress{
+  ingress {
     description     = "HTTP"
     from_port       = 5000
     to_port         = 5000
@@ -45,14 +45,14 @@ resource "aws_security_group" "ecs_sg" {
     security_groups = [aws_security_group.alb_sg.id]
   }
 
-  egress{
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  depends_on = [ aws_security_group.alb_sg ]
+  depends_on = [aws_security_group.alb_sg]
 
   tags = {
     Environment = local.env
@@ -65,7 +65,7 @@ resource "aws_security_group" "efs_sg" {
   description = "Allow NFS inbound traffic"
   vpc_id      = var.vpc_id
 
-  ingress{
+  ingress {
     description     = "HTTP"
     from_port       = 2049
     to_port         = 2049
@@ -73,14 +73,14 @@ resource "aws_security_group" "efs_sg" {
     security_groups = [aws_security_group.ecs_sg.id]
   }
 
-  egress{
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  depends_on = [ aws_security_group.ecs_sg ]
+  depends_on = [aws_security_group.ecs_sg]
 
   tags = {
     Environment = local.env

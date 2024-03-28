@@ -3,7 +3,7 @@ variable "alb_sg" {
 }
 
 variable "public_subnets" {
-  type = list
+  type = list(any)
 }
 
 variable "vpc_id" {
