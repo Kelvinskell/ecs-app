@@ -45,3 +45,13 @@ module "security_groups" {
 
   vpc_id = module.vpc.vpc_id
 }
+
+# Create Elastic Filesystem
+module "elastic_filesystem" {
+  source = "./modules/efs"
+
+  efs_sg = module.security_groups.EFS-sg_id
+  vpc_private_subnet1 = module.vpc.private_subnets[0]
+  vpc_private_subnet2 = module.vpc.private_subnets[1]
+  vpc_private_subnets3 = module.vpc.private_subnets[2]
+}
