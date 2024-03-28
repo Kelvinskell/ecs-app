@@ -1,4 +1,4 @@
-output "alb_id" {
+output "alb_arn" {
   description = "The id of the load balancer"
-  value       = aws_lb.alb.id
+  value       = aws_lb.alb.arn
 }
