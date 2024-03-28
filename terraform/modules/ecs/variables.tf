@@ -3,6 +3,10 @@ variable "efs_id" {
   type = string
 }
 
-variable "ecs_execution_role" {
-  type = string
+variable "azs" {
+    default = ["usest-1a", "us-east-1b", "us-east-1c"]
+}
+
+variable "alb_arn" {
+    type = string
 }

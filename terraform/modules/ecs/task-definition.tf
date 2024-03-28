@@ -1,6 +1,6 @@
 resource "aws_ecs_task_definition" "ecs_task" {
   family = "ecs-app"
-  execution_role_arn = var.ecs_execution_role
+  execution_role_arn = aws_iam_role.ecs_execution_role.id
   network_mode = "awsvpc"
   cpu = "2048"
   memory = "5120"
