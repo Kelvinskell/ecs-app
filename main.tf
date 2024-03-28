@@ -15,7 +15,7 @@ provider "aws" {
 
 # Define local values
 locals {
-  environment = "Prod"
+  env = "Prod"
   purpose     = "ECS App" 
 }
 
@@ -34,7 +34,14 @@ module "vpc" {
   enable_vpn_gateway = false
 
   tags = {
-    Environment = local.environment
+    Environment = local.env
     Purpose = local.purpose
   }
+}
+
+# Create security groups
+module "security_groups" {
+  source = "./modules/security-groups"
+
+  vpc_id = module.vpc.vpc_id
 }
