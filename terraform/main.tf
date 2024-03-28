@@ -63,3 +63,11 @@ module "application_load_balancer" {
   alb_sg = module.security_groups.Alb-sg_id
   public_subnets = flatten([module.vpc.public_subnets[*]])
 }
+
+module "ecs" {
+  source = "./modules/ecs"
+
+  efs_id = module.elastic_filesystem.efs_id
+  ecs_execution_role = module.elastic_filesystem.ecs_role_id
+  
+}
