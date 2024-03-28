@@ -42,7 +42,7 @@ resource "aws_security_group" "ecs_sg" {
     from_port       = 5000
     to_port         = 5000
     protocol        = "tcp"
-    security_groups = [aws_security_group.alb_sg]
+    security_groups = [aws_security_group.alb_sg.id]
   }
 
   egress{
@@ -51,6 +51,8 @@ resource "aws_security_group" "ecs_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  depends_on = [ aws_security_group.alb_sg ]
 
   tags = {
     Environment = local.env
@@ -68,7 +70,7 @@ resource "aws_security_group" "efs_sg" {
     from_port       = 2049
     to_port         = 2049
     protocol        = "tcp"
-    security_groups = [aws_security_group.ecs_sg]
+    security_groups = [aws_security_group.ecs_sg.id]
   }
 
   egress{
@@ -77,6 +79,8 @@ resource "aws_security_group" "efs_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  depends_on = [ aws_security_group.ecs_sg ]
 
   tags = {
     Environment = local.env
