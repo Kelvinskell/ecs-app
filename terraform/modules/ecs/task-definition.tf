@@ -11,7 +11,6 @@ resource "aws_ecs_task_definition" "ecs_task" {
 
     efs_volume_configuration {
       file_system_id = var.efs_id
-      root_directory = "/opt/data"
     }
   }
 
