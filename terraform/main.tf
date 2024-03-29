@@ -24,7 +24,7 @@ module "vpc" {
   private_subnets = ["10.20.0.0/25", "10.20.0.128/25", "10.20.1.0/25"]
   public_subnets  = ["10.20.1.128/25", "10.20.2.0/25", "10.20.2.128/25"]
 
-  enable_nat_gateway = false
+  enable_nat_gateway = true
   enable_vpn_gateway = false
 
   tags = {
@@ -64,7 +64,7 @@ module "ecs" {
   efs_id             = module.elastic_filesystem.efs_id
   azs = var.azs
   tg_arn = module.application_load_balancer.tg_arn
-  public_subnets = flatten([module.vpc.public_subnets[*]])
+  private_subnets = flatten([module.vpc.private_subnets[*]])
   ecs_sg = module.security_groups.ECS-sg_id
 
 }

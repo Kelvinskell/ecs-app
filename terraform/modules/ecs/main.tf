@@ -23,7 +23,7 @@ resource "aws_ecs_service" "ecs-svc" {
   }
 
   network_configuration {
-    subnets = var.public_subnets
+    subnets = var.private_subnets
     security_groups = [var.ecs_sg]
     #assign_public_ip = true
   }
