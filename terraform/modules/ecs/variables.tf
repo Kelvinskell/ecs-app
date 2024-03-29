@@ -10,3 +10,11 @@ variable "azs" {
 variable "tg_arn" {
   type = string
 }
+
+variable "private_subnets" {
+  type = list
+}
+
+variable "ecs_sg" {
+  type = string
+}

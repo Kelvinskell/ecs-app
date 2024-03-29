@@ -27,4 +27,10 @@ resource "aws_ecs_service" "ecs-svc" {
     type       = "memberOf"
     expression = "attribute:ecs.availability-zone in [us-east-1a, us-east-1b, us-east-1c ]"
   }
+
+  network_configuration {
+    subnets = [var.private_subnets]
+    security_groups = [var.ecs_sg]
+    assign_public_ip = true
+  }
 }
