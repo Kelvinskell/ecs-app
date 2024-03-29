@@ -13,12 +13,6 @@ provider "aws" {
   profile = "default"
 }
 
-# Define local values
-locals {
-  env     = "Prod"
-  purpose = "ECS App"
-}
-
 # Create A VPC
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
