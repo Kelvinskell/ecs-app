@@ -15,8 +15,6 @@ resource "aws_ecs_service" "ecs-svc" {
   task_definition = aws_ecs_task_definition.ecs_task.id
   desired_count = 2
   launch_type = "FARGATE"
-  #iam_role = aws_iam_role.ecs_svc_execution_role.arn
-  #depends_on = [ aws_iam_role.ecs_svc_execution_role ]
 
   load_balancer {
     target_group_arn = var.tg_arn
