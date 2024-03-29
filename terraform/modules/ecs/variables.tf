@@ -7,6 +7,6 @@ variable "azs" {
   default = ["usest-1a", "us-east-1b", "us-east-1c"]
 }
 
-variable "alb_arn" {
+variable "tg_arn" {
   type = string
 }

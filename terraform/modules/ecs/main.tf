@@ -18,7 +18,7 @@ resource "aws_ecs_service" "ecs-svc" {
   depends_on = [ aws_iam_role.ecs_svc_execution_role ]
 
   load_balancer {
-    target_group_arn = var.alb_arn
+    target_group_arn = var.tg_arn
     container_name   = "news_app"
     container_port   = 5000
   }

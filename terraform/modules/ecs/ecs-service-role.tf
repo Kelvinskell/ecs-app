@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "assume_role_svc" {
 resource "aws_iam_role" "ecs_svc_execution_role" {
   name               = "ecsapp_ECS_Service_Role"
   path               = "/"
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+  assume_role_policy = data.aws_iam_policy_document.assume_role_svc.json
 
   inline_policy {
     name = "ecs_service_execution_policy_for_ecs_app"

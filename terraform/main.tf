@@ -63,6 +63,6 @@ module "ecs" {
 
   efs_id             = module.elastic_filesystem.efs_id
   azs = var.azs
-  alb_arn = module.application_load_balancer.alb_arn
+  tg_arn = module.application_load_balancer.tg_arn
 
 }
