@@ -66,5 +66,4 @@ module "ecs" {
   tg_arn = module.application_load_balancer.tg_arn
   private_subnets = flatten([module.vpc.private_subnets[*]])
   ecs_sg = module.security_groups.ECS-sg_id
-
 }
