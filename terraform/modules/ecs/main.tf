@@ -13,7 +13,7 @@ resource "aws_ecs_service" "ecs-svc" {
   name            = "ecs-app-svc"
   cluster         = aws_ecs_cluster.ecs-cluster.id
   task_definition = aws_ecs_task_definition.ecs_task.id
-  iam_role = aws_iam_role.ecs_svc_execution_role.arn
+  #iam_role = aws_iam_role.ecs_svc_execution_role.arn
   desired_count   = 3
   depends_on = [ aws_iam_role.ecs_svc_execution_role ]
 
@@ -29,8 +29,8 @@ resource "aws_ecs_service" "ecs-svc" {
   }
 
   network_configuration {
-    subnets = [var.private_subnets]
+    subnets = var.private_subnets
     security_groups = [var.ecs_sg]
-    assign_public_ip = true
+    #assign_public_ip = true
   }
 }
