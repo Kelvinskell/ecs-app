@@ -23,6 +23,6 @@ resource "aws_ecs_service" "ecs-svc" {
 
   placement_constraints {
     type       = "memberOf"
-    expression = "attribute:ecs.availability-zone in ${var.azs}"
+    expression = "$${attribute:ecs.availability-zone in [var.azs]}"
   }
 }
