@@ -64,7 +64,7 @@ module "ecs" {
   efs_id             = module.elastic_filesystem.efs_id
   azs = var.azs
   tg_arn = module.application_load_balancer.tg_arn
-  private_subnets = flatten([module.vpc.private_subnets[*]])
+  public_subnets = flatten([module.vpc.public_subnets[*]])
   ecs_sg = module.security_groups.ECS-sg_id
 
 }

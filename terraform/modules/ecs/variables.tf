@@ -11,7 +11,7 @@ variable "tg_arn" {
   type = string
 }
 
-variable "private_subnets" {
+variable "public_subnets" {
   type = list
 }
 
