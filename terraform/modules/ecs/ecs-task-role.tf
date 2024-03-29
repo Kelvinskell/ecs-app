@@ -12,13 +12,13 @@ data "aws_iam_policy_document" "assume_role" {
 }
 
 # Create Role
-resource "aws_iam_role" "ecs_execution_role" {
-  name               = "ECSAppRole"
+resource "aws_iam_role" "ecs_task_execution_role" {
+  name               = "ecsapp_ECS_Task_Role"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 
   inline_policy {
-    name = "ecs_execution_policy_for_ecs_app"
+    name = "ecs_task_execution_policy_for_ecs_app"
 
     policy = jsonencode(
       {
@@ -41,6 +41,6 @@ resource "aws_iam_role" "ecs_execution_role" {
     )
   }
   tags = {
-    Environment = "prod"
+    Environment = "Prod"
   }
 }
