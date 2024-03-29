@@ -19,7 +19,7 @@ resource "aws_ecs_service" "ecs-svc" {
 
   load_balancer {
     target_group_arn = var.tg_arn
-    container_name   = "news_app"
+    container_name   = "news-app"
     container_port   = 5000
   }
 
