@@ -7,7 +7,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
   requires_compatibilities = ["FARGATE"]
 
   volume {
-    name = "service-storage"
+    name = "db-data"
 
     efs_volume_configuration {
       file_system_id = var.efs_id
