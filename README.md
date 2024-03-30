@@ -11,3 +11,8 @@ This is a terraform project that automates the provisioning of all necessary inf
 - Run `terraform validate` to validate the source code synatx.
 - Run `terraform plan` to view proposed infrastructure changes.
 - Run `terraform apply -auto-approve` to provision the infrastructure and deploy the application.
+
+The DNS name of the application load balancer attached to the load balancer is printed out as [terraform output](https://developer.hashicorp.com/terraform/language/values/outputs) once the apply is complete.
+
+
+## How To Contribute
