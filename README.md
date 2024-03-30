@@ -37,4 +37,4 @@ For major changes, please open an issue first to discuss what you would like to 
 4. Names for functions should start with a capital letter and should be meaningfully related to its intended action
 5. Finally, be sure to test your code before submitting changes
 
-To learn more about this project and how you can manually achieve this outcome via the AWS Console, click [Here].
+To learn more about this project and how you can manually achieve this outcome via the AWS Console, click [Here]().
