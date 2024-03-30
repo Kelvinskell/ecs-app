@@ -4,7 +4,7 @@ This project uses terraform to automate the deployment of a containerized applic
 This is a terraform project that automates the provisioning of all necessary infrastructure required  - and automatically deploys a containerized python aplication to Amazon Elastic Container Service (AWS ECS).
 
 
-## How to use
+## How To Use
 - Clone the repository.
 - Switch into the cloned repository and `cd` into the terraform directory.
 - Run `terraform init`
