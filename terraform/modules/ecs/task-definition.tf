@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
   container_definitions = jsonencode([
     {
       "name" : "news-app",
-      "image" : "kelvinskell/terra-tier",
+      "image" : "kelvinskell/terra-tier-ecs",
       "cpu" : 0,
       "portMappings" : [
         {
@@ -59,6 +59,10 @@ resource "aws_ecs_task_definition" "ecs_task" {
           "name" : "DATABASE_PASSWORD",
           "value" : "Yourpassword@123"
         }
+        {
+          "name" : "MYSQL_ROOT_PASSWORD",
+          "value" : "yourrootpassword"
+        },
       ],
       "environmentFiles" : [],
       "mountPoints" : [],
